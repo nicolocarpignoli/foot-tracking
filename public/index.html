@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"></script>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Quicksand:wght@400;700&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet">
+        <title>AR T Shoes prototipo</title>
+    </head>
+    <body>
+        <canvas class="deepar" id="deepar-canvas"></canvas>
+        <span id="feet-text">Inquadra i tuoi piedi per visualizzare le calzature</span>
+        <div id="loader-wrapper">
+            <span class="loader"></span></span>
+        </div>
+        <div class="buttons">
+            <div class="btns">
+                <button>Indietro</button>
+                <button>Cambia scarpa</button>
+            </div>
+        </div>
+        <script>
+            // Top-level await is not supported.
+            // So we wrap the whole code in an async function that is called immediatly.
+            (async function() {
+                // Resize the canvas according to screen size.
+                const canvas = document.getElementById('deepar-canvas');
+
+                // this is to make the canvas look good on high-res screens
+                const scale = window.devicePixelRatio || 1;
+
+                const width = window.innerWidth > window.innerHeight ? Math.floor(window.innerHeight * 0.66) : window.innerWidth
+                canvas.width = Math.floor(width * scale);
+                canvas.height = Math.floor(window.innerHeight * scale);
+
+                // constrain the actual size of the canvas
+                canvas.style.maxHeight = window.innerHeight + "px";
+                canvas.style.maxWidth = width + "px";;
+
+                let deepAR;
+                window.alert = () => {};    // Disable alert messages.
+
+                try {
+                    // Initialize DeepAR.
+                    deepAR = await deepar.initialize({
+                        licenseKey: 'b0e8e382da2032ff28ba5bf99e6f73d7b27c3f257f1ca19ffbed6de13f5a7f622c1900d537780a33',
+                        // licenseKey: 'your_license_key_goes_here',
+                        canvas: canvas,
+                        effect: 'effects/Shoe', // The shoe-try-on effect file.
+                        additionalOptions: {
+                        cameraConfig: {
+                            facingMode: "environment",
+                        },
+                        hint: "footInit", // Add this hint to let DeepAR know we want to optimize for shoe-try-on use-case.
+                        }
+                    });
+                } catch(err) {
+                    console.log('errore')
+                    console.log(deepAR); // For debuggin
+                }
+
+                // Hide the loading screen.
+                document.getElementById("loader-wrapper").style.display = "none";
+
+                deepAR.callbacks.onFeetTracked = (leftFoot, rightFoot) => {
+                    const feetText = document.getElementById("feet-text");
+                    // Hide the text when the feet are first detected.
+                    if (leftFoot.detected || rightFoot.detected) {
+                        feetText.style.display = "none";
+                        deepAR.callbacks.onFeetTracked = undefined; // Unregister from the callback.
+                    }
+                };
+            })();
+        </script>
+    </body>
+</html>
