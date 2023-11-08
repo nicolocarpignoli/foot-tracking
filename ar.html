@@ -19,14 +19,33 @@
                 <img src="assets/logod.png" aria-hidden />
             </div>
         </header>
+        <article class="info">
+            <h1>ESEMPIO, NIKE, 35/48</h1>
+            <span> Semirigido potenziato </span>
+            <ul>
+                <li>
+                    Tessuto TECH Traspirante
+                </li>
+                <li>
+                    Contrafforte stabilizzante e imbottito
+                </li>
+                <li>
+                    Tomaia con fodera interna Total Comfort
+                </li>
+                <li>
+                    Pro Extra Fit con ampia vestibilità
+                </li>
+            </ul>
+        </article>
         <model-viewer
             src="./assets/nike.glb"
             ar
             camera-controls
-            loading="eager"
-            touch-action="pan-y"
-            alt="A 3D model of an astronaut"
-            xr-environment></model-viewer>
+            alt="Una scarpa in 3D"
+            xr-environment>
+        <button slot="ar-button">Vedi nel tuo spazio</button>
+        </model-viewer>
+        <a href="list" class="back">Indietro</a>
     </main>
 </body>
 </html>

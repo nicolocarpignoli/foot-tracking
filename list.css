@@ -1,4 +1,9 @@
+.list-container {
+    background: #fff;
+}
+
 .list {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -6,6 +11,11 @@
 
 .list .list-item {
     width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+
+.list .list-item:not(:last-child) {
     border-bottom: 1px solid var(--primary-color);
 }
 
@@ -19,10 +29,11 @@
 
 .list-item a p {
     width: 40%;
+    font-size: 0.75rem;
 }
 
 .list-item a img {
-    width: 30%;
+    width: 27%;
 }
 
 .list-item .buttons {
