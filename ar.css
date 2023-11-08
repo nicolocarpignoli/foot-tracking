@@ -32,7 +32,7 @@ main.ar .back {
 
 button[slot='ar-button'] {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1px;
     right: 0;
 }
 
