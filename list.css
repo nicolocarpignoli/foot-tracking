@@ -1,0 +1,42 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list .list-item {
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.list-item a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.list-item a p {
+    width: 40%;
+}
+
+.list-item a img {
+    width: 30%;
+}
+
+.list-item .buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.list-item .buttons button {
+    border: 1px solid var(--primary-color);
+    padding: 0.25rem;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    background-color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
