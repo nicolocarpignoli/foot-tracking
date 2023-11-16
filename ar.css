@@ -1,7 +1,7 @@
 model-viewer {
     --progress-bar-color: transparent;
 
-    height: 53%;
+    height: 45%;
     width: 100%;
 }
 
@@ -13,13 +13,14 @@ main.ar {
 main.ar button,
 main.ar a {
     padding: 0.5rem;
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
     font-size: 0.75rem;
     width: fit-content;
-    border: none;
+    border: 2px solid var(--primary-color);
 }
 
 main.ar .back {

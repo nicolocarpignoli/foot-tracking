@@ -14,7 +14,6 @@
     padding-bottom: 0.5rem;
 }
 
-
 .list .list-item:not(:last-child) {
     border-bottom: 1px solid var(--primary-color);
 }
@@ -43,11 +42,22 @@
 }
 
 .list-item .buttons button {
-    border: 1px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     padding: 0.25rem;
     color: var(--primary-color);
     font-size: 0.75rem;
+    font-weight: 700;
     background-color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+span.label {
+    font-size: 0.85rem;
+    background-color: #E9649D;
+    padding: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    width: fit-content;
 }
