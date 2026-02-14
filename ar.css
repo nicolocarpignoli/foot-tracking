@@ -51,7 +51,7 @@ button[slot='ar-button'] {
 
 .info span {
     font-size: 0.85rem;
-    background-color: #E9649D;
+    background-color: transparent;
     padding: 0.5rem;
     font-weight: bold;
     text-transform: uppercase;
